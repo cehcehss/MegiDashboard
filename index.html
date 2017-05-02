@@ -1,0 +1,223 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>災情資訊儀表板</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link type="text/css" rel="stylesheet" href="index2.css">
+    <link type="text/css" rel="stylesheet" href="./css/dc.css" />
+    <link type="text/css" rel="stylesheet" href="./css/leaflet.css" />
+    <link type="text/css" rel="stylesheet" href="./css/leaflet-legend.css" />
+    <link type="text/css" rel="stylesheet" href="./css/MarkerCluster.Default.css" />
+    <link type="text/css" rel="stylesheet" href="./css/MarkerCluster.css" />
+    <!-- 最新編譯和最佳化的 CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/keen-dashboards.css" />
+    <link href="./css/keen.mapbox.css" rel="stylesheet" />
+    <!--<link href="./css/jquery.dataTables.min.css" rel="stylesheet" type="text/css">-->
+    <link href="https://cdn.datatables.net/buttons/1.2.4/css/buttons.bootstrap.min.css" rel="stylesheet" type="text/css">
+    <link href="https://cdn.datatables.net/1.10.13/css/dataTables.bootstrap.min.css" rel="stylesheet" type="text/css">
+</head>
+
+<body class="application">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">梅姬颱風災情資訊儀表板</a>
+                <!--梅姬颱風災情資訊儀表板-->
+                <!-- Typhoon Megi Disaster Dashboard -->
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="turorial.html">操作說明</a></li>
+                    <!--<li><a href="team.html">關於</a></li>-->
+                    <li><a href="http://data.moi.gov.tw/MoiOD/Data/DataDetail.aspx?oid=066CCEC3-24ED-4E1C-AFC7-A60B80AD0CE5" target="_blank">資料來源</a></li>
+                    <li id="li_reset"><a href="javascript:dc.filterAll();dc.renderAll();" class="reset">重置設定</a></li>
+                    <!--a href="javascript:dc.filterAll();dc.renderAll();" class="reset"-->
+                    <!--a href="index.html" class="reset"-->
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="bigcontainer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-4" id="mapbox-panel">
+                    <div class="chart-wrapper">
+                        <div class="chart-title">
+                            災情地圖
+                            <div class="btn-group" role="group" aria-label="..." id="map_option">
+                                <button class="btn btn-info btn-sm BTNcluster"><span class="glyphicon glyphicon-map-marker"></span> 群聚地圖
+                                </button>
+                                <button class="btn btn-default btn-sm BTNmarker"><span class="glyphicon glyphicon-globe"></span> 點位地圖
+                                </button>
+                                <div class="btn-sm" id="select-menu"></div>
+                            </div>
+                        </div>
+                        <div class="chart-stage">
+                            <div id="ClusterMap"></div>
+                            <div id="MarkerMap"></div>
+                        </div>
+                       <!--  <div class="chart-notes">
+                            顯示災情案件群聚區位與數量
+                        </div> -->
+                    </div>
+                </div>
+                <div class="col-sm-8">
+                    <div class="row">
+                        <div id="time-panel">
+                            <div class="col-sm-12" style="padding:0;margin-left:10;">
+                                <div class="chart-wrapper">
+                                    <div class="chart-title">
+                                        災情時序圖
+                                    </div>
+                                    <div class="chart-stage">
+                                        <div id="dis_time"></div>
+                                    </div>
+                                    <!--<div class="chart-notes">
+                    
+                  </div>-->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12" id="time-panel" style="top: 263px;padding:0;margin-left:10;">
+                            <hr class="style-one">
+                        </div>
+                        <div class="manycharts" id="rightbottom">
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    <div class="col-sm-3">
+                                        <div class="row">
+                                            <div class="col-sm-12 " style="margin-left:10;">
+                                                <div class="row">
+                                                    <div class="chart-wrapper">
+                                                        <div class="chart-title">
+                                                            災情總數
+                                                        </div>
+                                                        <div class="chart-stage">
+                                                            <div class="data_count">
+                                                                <div class="total-color">
+                                                                    <a class="total-count total-color"></a>筆</div>
+                                                                <!--<div class="number-text">受困人數<a class="trapped-count"></a></div>-->
+                                                                <!--<div class="number-text">選取數量<a class="filter-count"></a></div>-->
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-sm-12 " style="margin-left:10;">
+                                                <div class="row">
+                                                    <div class="chart-wrapper">
+                                                        <div class="chart-title">
+                                                            選取數量
+                                                        </div>
+                                                        <div class="chart-stage">
+                                                            <div class="data_count">
+                                                                <!--<div class="number-text">災情總數<a class="total-count"></a></div>-->
+                                                                <!--<div class="number-text">受困人數<a class="trapped-count"></a></div>-->
+                                                                <div class="filter-color">
+                                                                    <a class="filter-count filter-color"></a>筆</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-5 piecolumn">
+                                        <div class="chart-wrapper">
+                                            <div class="chart-title">
+                                                災情圓餅圖
+                                            </div>
+                                            <div class="chart-stage">
+                                                <div id="dis_pie"></div>
+                                            </div>
+                                            <div class="chart-notes">
+                                                災情類型與比例
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-sm-4" style="padding:0;">
+                                        <div class="chart-wrapper">
+                                            <div class="chart-title">
+                                                縣市災情數量統計圖
+                                            </div>
+                                            <div class="chart-stage">
+                                                <div id="chart-row-county"></div>
+                                            </div>
+                                            <div class="chart-notes">
+                                                依據各縣市發生災情數量作排序
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12" style="padding:0;margin-left:10;">
+                                <div class="chart-wrapper">
+                                    <div class="chart-title">
+                                        災情列表
+                                    </div>
+                                    <div class="chart-stage table-responsive">
+                                        <table class="table table-hover order-column dt-responsive table-bordered" id="table-graph" width="99%">
+                                            <thead>
+                                                <tr class="active">
+                                                    <th class="col-county-time">縣市</th>
+                                                    <th class="col-width-loc">地區</th>
+                                                    <th>日期</th>
+                                                    <th class="col-county-time">時間</th>
+                                                    <th class="col-width-type">災情類別</th>
+                                                    <th>災情狀況</th>
+                                                </tr>
+                                            </thead>
+                                        </table>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="./js/jquery-3.2.0.js"></script>
+    <script type="text/javascript" src="./js/underscore-min.js"></script>
+    <script type="text/javascript" src="./js/d3.js"></script>
+    <script type="text/javascript" src="./js/crossfilter.js"></script>
+    <script type="text/javascript" src="./js/leaflet.js"></script>
+    <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/dc/2.1.4/dc.min.js"></script>
+    <script type="text/javascript" src="./js/dc.leaflet.js"></script>
+    <script type="text/javascript" src="./js/leaflet.markercluster.js"></script>
+    <script type="text/javascript" src="./js/queue.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/keen.min.js"></script>
+    <script type="text/javascript" src="megi2.js"></script>
+    <script type="text/javascript" src="./js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript" src="./js/dataTables.scroller.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/fixedcolumns/3.2.2/js/dataTables.fixedColumns.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/select/1.2.1/js/dataTables.select.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/dc-select-menu.js"></script>
+    <script type="text/javascript" src="./js/L.Map.Sync.js"></script>
+    
+    
+    <script>
+    $(function() {
+        $(window).resize(adjust);
+
+        function adjust() {
+            var offset = $(window).height() - 145;
+            $("#mapbox-panel .chart-stage").height(offset);
+        }
+        adjust();
+    });
+    </script>
+</body>
+
+</html>

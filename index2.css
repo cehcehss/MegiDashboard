@@ -1,0 +1,235 @@
+html,
+body {
+    font-family: "Microsoft JhengHei" !important;
+    width: 100%;
+    overflow: hidden;
+}
+
+.bigcontainer {
+    min-width: 1250px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+
+path {
+    stroke: white;
+}
+
+rect:hover {
+    fill: #666666;
+}
+
+.axis {
+    font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: grey;
+    stroke-width: 1;
+    shape-rendering: crispEdges;
+}
+
+a.dc-chart.filter-color {
+    color: #3b5998 !important;
+}
+
+.filter-color {
+    color: #3b5998;
+}
+
+a.dc-chart.total-color {
+    color: #ea5c6f !important;
+}
+
+.total-color {
+    color: #ea5c6f;
+    text-align: center;
+}
+
+div.data_count {
+    height: 88px;
+    text-align: center;
+}
+
+.number-text {
+    font-size: 14px;
+    margin-left: 5px;
+}
+
+.filter-count,
+.total-count,
+.trapped-count {
+    font-size: 50px;
+}
+
+a.filter-count,
+a.total-count {
+    text-decoration: none !important;
+}
+
+a.total-count:hover {
+    color: #ee7c8b !important;
+}
+
+a.filter-count:hover {
+    color: #627aac !important;
+}
+
+#dis_time .x.axis text {
+    text-anchor: end !important;
+    transform: rotate(-15deg);
+}
+
+.reset {
+    color: #ffd700 !important;
+}
+
+a.reset:hover {
+    color: white !important;
+}
+
+.map,
+#map {
+    margin: auto;
+}
+
+table {
+    font-size: 16px !important;
+    margin-bottom: 100px !important;
+}
+
+.col-width-loc {
+    width: 50px;
+}
+
+.col-county-time {
+    width: 35px;
+}
+
+.col-width-type {
+    width: 75px;
+}
+
+.piecolumn {
+    padding-right: 5px !important;
+}
+
+#mapbox-panel {
+   /*  right: 66%;
+    position: fixed; */
+    overflow: hidden;
+    height: calc(56% + 260px); 
+}
+
+#mapbox-panel .chart-title {
+    border: medium none;
+}
+
+#ClusterMap {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+    z-index: 20;
+}
+
+#MarkerMap {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0px;
+    right: 0px;
+    top: 0px;
+    bottom: 0px;
+}
+
+#time-panel {
+    left: 34%;
+    position: fixed;
+    width: 64%;
+
+}
+
+#dis_time {
+    width: 95%;
+}
+
+div#rightbottom {
+    left: 34%;
+    top: 281px;
+    position: fixed;
+    width: 65%;
+    height: 58%;
+    overflow-x: hidden;
+}
+
+#map_option {
+    margin-left: 33px;
+}
+
+#select-menu {
+    font-size: 14px !important;
+}
+
+.leaflet-popup-content {
+    font-family: '微軟正黑體';
+    font-size: 14px;
+}
+
+.leaflet-popup-content-wrapper {
+    text-align: center !important;
+    border-radius: 0px !important;
+    background: #3d4a57 !important;
+    color: white !important;
+}
+
+.chart-wrapper .chart-title {
+    color: #0e2f44 !important;
+    font-size: 15px !important;
+    font-weight: bold !important;
+}
+
+.reset {
+    margin-top: 10px !important;
+    margin-bottom: 10px !important;
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+    border-width: 1px;
+    border-style: double;
+    margin-right: 10px !important;
+    margin-left: 10px !important;
+}
+
+hr.style-one {
+    border-top: 1px solid #bbb;
+    border-bottom: 1px solid #fff;
+    /* width: 830px; */
+    width: 100%;
+}
+
+.navbar-brand {
+    font-size: 20px !important;
+}
+
+@media screen and ( max-width: 1290px) {
+    #map_option {
+        margin-left: 0px;
+    }
+}
+
+@media screen and ( max-width: 450px) {
+    #mapbox-panel {
+    right: 66%;
+    position: fixed;
+}
+}
+
+div.dataTables_wrapper div.dataTables_paginate {
+    margin-bottom: 10px !important;
+
+}

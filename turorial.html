@@ -1,0 +1,120 @@
+<!DOCTYPE>
+<html>
+
+<head>
+    <title>災情資訊儀表板</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <!-- <link type="text/css" rel="stylesheet" href="index2.css"> -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./css/keen-dashboards.css" />
+    <link href="./css/keen.mapbox.css" rel="stylesheet" />
+    <style>
+    body {
+        width: 100%;
+        text-align: center;
+        font-family: "微軟正黑體" !important;
+    }
+    .navbar-brand {
+    font-size: 20px ;
+    }
+    #muteYouTubeVideoPlayer {
+        width: 800px;
+        height: 400px;
+        margin: 0 auto;
+    }
+    
+    h4,h5{
+        font-weight: bold;
+    }
+    .reset {
+        color: #ffd700 !important;
+    }
+    
+    a.reset:hover {
+        color: white !important;
+    }
+    
+    .reset {
+        margin-top: 10px !important;
+        margin-bottom: 10px !important;
+        padding-top: 5px !important;
+        padding-bottom: 5px !important;
+        border-width: 1px;
+        border-style: double;
+        margin-right: 10px !important;
+        margin-left: 10px !important;
+    }
+    
+    .reset {
+        visibility: hidden;
+    }
+    .start_to_use{
+        margin: 15px 0;
+    }
+    </style>
+</head>
+
+<body class="application">
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">梅姬颱風災情資訊儀表板</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">操作說明</a></li>
+                    <li><a href="http://data.moi.gov.tw/MoiOD/Data/DataDetail.aspx?oid=066CCEC3-24ED-4E1C-AFC7-A60B80AD0CE5" target="_blank">資料來源</a></li>
+                    <li id="li_reset"><a href="javascript:dc.filterAll();dc.renderAll();" class="reset">重置設定</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <h4>災情資訊儀表板操作說明影片</h4>
+    <h5>建議將影片調至HD畫質</h5>
+    <div id="muteYouTubeVideoPlayer">
+    </div>
+    <div class="start_to_use">
+        <a href="index.html" class="btn btn-info btn-lg "><span class="glyphicon glyphicon-hand-right"></span> 使用災情資訊儀表板
+        </a>
+    </div>
+    <script type="text/javascript" src="./js/jquery-3.2.0.js"></script>
+    <script type="text/javascript" src="./js/queue.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./js/keen.min.js"></script>
+    <script async src="https://www.youtube.com/iframe_api"></script>
+    <script>
+    function onYouTubeIframeAPIReady() {
+        var player;
+        player = new YT.Player('muteYouTubeVideoPlayer', {
+            videoId: 'bYVPXGcQb2c', // 影片ID
+            playerVars: {
+                autoplay: 1, // 自動播放
+                controls: 1, // 顯示暫停.播放按鈕
+                showinfo: 0, // 影片標題
+                modestbranding: 0, // YouTube Logo
+                loop: 0, // 讓影片循環播放
+                fs: 1, // 隱藏全螢幕按鈕
+                cc_load_policty: 0, // 隱藏字幕
+                iv_load_policy: 3, // 隱藏影片註解
+                autohide: 0 // 當播放影片時隱藏影片控制列
+            },
+            events: {
+                onReady: function(e) {
+                    e.target.mute();
+                }
+            }
+        });
+    };
+
+    // $('.reset').hide();
+    </script>
+</body>
+
+</html>
