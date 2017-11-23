@@ -117,10 +117,10 @@ table {
 }
 
 #mapbox-panel {
-   /*  right: 66%;
+    /*  right: 66%;
     position: fixed; */
     overflow: hidden;
-    height: calc(56% + 260px); 
+    height: calc(56% + 260px);
 }
 
 #mapbox-panel .chart-title {
@@ -152,7 +152,6 @@ table {
     left: 34%;
     position: fixed;
     width: 64%;
-
 }
 
 #dis_time {
@@ -164,7 +163,7 @@ div#rightbottom {
     top: 281px;
     position: fixed;
     width: 65%;
-    height: 58%;
+    height: 65%;
     overflow-x: hidden;
 }
 
@@ -224,12 +223,11 @@ hr.style-one {
 
 @media screen and ( max-width: 450px) {
     #mapbox-panel {
-    right: 66%;
-    position: fixed;
-}
+        right: 66%;
+        position: fixed;
+    }
 }
 
 div.dataTables_wrapper div.dataTables_paginate {
     margin-bottom: 10px !important;
-
 }
