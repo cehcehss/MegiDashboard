@@ -65,7 +65,7 @@
                             <div id="ClusterMap"></div>
                             <div id="MarkerMap"></div>
                         </div>
-                       <!--  <div class="chart-notes">
+                        <!--  <div class="chart-notes">
                             顯示災情案件群聚區位與數量
                         </div> -->
                     </div>
@@ -205,18 +205,18 @@
     <script type="text/javascript" src="https://cdn.datatables.net/1.10.13/js/dataTables.bootstrap.min.js"></script>
     <script type="text/javascript" src="./js/dc-select-menu.js"></script>
     <script type="text/javascript" src="./js/L.Map.Sync.js"></script>
-    
-    
-    <script>
-    $(function() {
-        $(window).resize(adjust);
 
-        function adjust() {
-            var offset = $(window).height() - 145;
-            $("#mapbox-panel .chart-stage").height(offset);
-        }
-        adjust();
-    });
+
+    <script>
+        $(function() {
+            $(window).resize(adjust);
+
+            function adjust() {
+                var offset = $(window).height() - 145;
+                $("#mapbox-panel .chart-stage").height(offset);
+            }
+            adjust();
+        });
     </script>
 </body>
 
